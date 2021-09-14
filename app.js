@@ -16,28 +16,31 @@ const decr = (num) => {
 const res = () => {
     return { type: "RESET" };
 };
+
 const reset = document.getElementById("reset");
-const counter = (state = 1, action = {}) => {
+// redux reducer for counter App.
+const counter = (state = { value: 1 }, action = {}) => {
     switch (action.type) {
         case INCREMENT:
-            return state + action.payload;
+            return { value: state.value + action.payload };
         case DECREMENT:
-            return state - action.payload;
+            return { value: state.value - action.payload };
         case RESET:
-            return 1;
+            return { value: 1 };
         default:
             return state;
     }
 };
-
+//redux store for counter App
 const store = createStore(counter);
+console.log(store);
 store.subscribe(() => {
-    let state = store.getState();
-    app.innerText = state;
-    state < 10
+    let { value } = store.getState();
+    app.innerText = value;
+    value < 10
         ? increment.removeAttribute("disabled")
         : increment.setAttribute("disabled", "disabled");
-    state > 1
+    value > 1
         ? decrement.removeAttribute("disabled")
         : decrement.setAttribute("disabled", "disabled");
 });
@@ -46,10 +49,12 @@ window.onload = function () {
     store.dispatch({ type: "INIT" });
 };
 increment.addEventListener("click", () => {
-    store.getState() < 10 && store.dispatch(incr(2));
+    const num = +document.getElementById("num").value;
+    store.getState().value < 10 && store.dispatch(incr(num));
 });
 decrement.addEventListener("click", () => {
-    store.getState() > 1 && store.dispatch(decr(2));
+    const num = +document.getElementById("num").value;
+    store.getState().value > 1 && store.dispatch(decr(num));
 });
 reset.addEventListener("click", () => {
     store.dispatch(res());
