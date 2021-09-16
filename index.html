@@ -6,23 +6,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redux Tutorial Series in Urdu/Hindi: Part 00</title>
+    <style>
+        .completed {
+            text-decoration: line-through;
+            font-weight: bold;
+        }
+
+        .notcompleted {
+            text-decoration: none;
+            font-weight: normal;
+        }
+
+    </style>
 </head>
 
 <body>
-    <!-- <h1 id="root"></h1>
+    <h2>Redux Counter App</h2>
+    <h4 id="root"></h4>
     <br>
     <input type="number" id="num" value="1">
     <br>
     <button id="dec">-</button>
     <button id="reset">RESET</button>
-    <button id="inc">+</button> -->
-    <h1>Redux Todo App</h1>
+    <button id="inc">+</button>
+    <h2>Redux Todo App</h2>
     <ol id="app">
         <li>There are no todo items...</li>
     </ol>
     <input type="text" id="todo" />
     <button id="add_todo">Add</button>
-    <script type="module" src="./todo.js"></script>
+    <script type="module" src="./app.js"></script>
 </body>
 
 </html>
