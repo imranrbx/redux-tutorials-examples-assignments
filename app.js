@@ -6,7 +6,8 @@ const increment = document.getElementById("inc");
 const decrement = document.getElementById("dec");
 const reset = document.getElementById("reset");
 const num = +document.getElementById("num").value;
-const todoApp = document.getElementById("app");
+const cmpTask = document.getElementById("cmp");
+const ncmpTask = document.getElementById("ncmp");
 const todoText = document.getElementById("todo");
 const addBtn = document.getElementById("add_todo");
 //redux store for counter App
@@ -26,7 +27,8 @@ store.subscribe(() => {
     // todo app logic
 
     const textItem = todos.length > 0 ? "" : "<li>There are no todo Items...</li>";
-    app.innerHTML = textItem;
+    ncmpTask.innerHTML = textItem;
+    cmpTask.innerHTML = textItem;
     todos.length > 0 &&
         todos.forEach((todo) => {
             const li = document.createElement("li");
@@ -36,7 +38,6 @@ store.subscribe(() => {
             li.classList.add(itemClass);
             const btnRem = document.createElement("button");
             btnRem.type = "button";
-
             btnRem.classList.add("rem_todo");
             btnRem.setAttribute("data-id", todo.id);
             const btnText = document.createTextNode("X");
@@ -44,7 +45,7 @@ store.subscribe(() => {
             btnRem.appendChild(btnText);
             li.appendChild(text);
             li.appendChild(btnRem);
-            app.appendChild(li);
+            todo.completed ? cmpTask.appendChild(li) : ncmpTask.appendChild(li);
         });
 });
 
@@ -69,8 +70,10 @@ addBtn.addEventListener(
             payload: { id: uuid(), title: todoText.value, completed: false },
         })
 );
-todoApp.addEventListener("click", (e) => {
+function taskHandler(e) {
     const id = e.target.dataset.id;
     const type = e.target.type === "button" ? REM_TODO : TOGGLE_TODO;
     id !== undefined && store.dispatch({ type: type, payload: id });
-});
+}
+ncmpTask.addEventListener("click", taskHandler);
+cmpTask.addEventListener("click", taskHandler);
