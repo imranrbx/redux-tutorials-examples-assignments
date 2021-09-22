@@ -1,5 +1,6 @@
 import React from "react";
+import Shop from "./shop";
 const App = () => {
-    return <h1>Hello, World!</h1>;
+    return <Shop />;
 };
 export default App;
