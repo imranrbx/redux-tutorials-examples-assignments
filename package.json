@@ -8,6 +8,8 @@
     },
     "dependencies": {
         "parcel": "^2.0.0-rc.0",
-        "redux": "^4.1.1"
+        "react-redux": "^7.2.5",
+        "redux": "^4.1.1",
+        "uuid": "^8.3.2"
     }
 }
