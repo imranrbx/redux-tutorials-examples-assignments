@@ -1,0 +1,15 @@
+{
+    "name": "redux-tutorial-00",
+    "version": "1.0.0",
+    "main": "app.js",
+    "license": "MIT",
+    "scripts": {
+        "start": "parcel serve --port=3000 index.html"
+    },
+    "dependencies": {
+        "parcel": "^2.0.0-rc.0",
+        "react-redux": "^7.2.5",
+        "redux": "^4.1.1",
+        "uuid": "^8.3.2"
+    }
+}
