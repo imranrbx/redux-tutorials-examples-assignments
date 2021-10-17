@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Provider } from 'react-redux';
+import Todos from './Todos';
+import apiStore from './api-store';
 import {
 	increment,
 	decrement,
@@ -18,7 +21,7 @@ const App = () => {
 			<h2>{value}</h2>
 			<br />
 			<input
-				type="text"
+				type='text'
 				value={text}
 				onChange={(e) => setText(e.target.value)}
 			/>
@@ -65,6 +68,9 @@ const App = () => {
 				}}>
 				-
 			</button>
+			<Provider store={apiStore}>
+				<Todos />
+			</Provider>
 		</div>
 	);
 };
